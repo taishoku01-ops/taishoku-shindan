@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 const BASE_PATH = process.env.NODE_ENV === "production" ? "/taishoku-shindan" : "";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -96,61 +96,6 @@ const questions: Question[] = [
   },
   {
     id: 5,
-    category: "労働時間",
-    question: "残業や休日出勤の状況はどうですか？",
-    choices: [
-      { text: "ほぼ定時で帰れている", points: 1 },
-      { text: "月20時間程度の残業がある", points: 2 },
-      { text: "月40時間以上の残業が常態化している", points: 3 },
-      { text: "月60時間超え・休日出勤も頻繁にある", points: 4 },
-    ],
-  },
-  {
-    id: 6,
-    category: "将来性",
-    question: "今の会社で自分が成長できると感じますか？",
-    choices: [
-      { text: "成長できる環境だと思う", points: 1 },
-      { text: "ある程度は学べるが限界を感じ始めている", points: 2 },
-      { text: "スキルアップの機会がほとんどない", points: 3 },
-      { text: "むしろ自分が退化している気がする", points: 4 },
-    ],
-  },
-  {
-    id: 7,
-    category: "給料と労働量",
-    question: "給料と自分の労働量のバランスについてどう感じますか？",
-    choices: [
-      { text: "妥当だと思う", points: 1 },
-      { text: "やや不満はあるが許容範囲", points: 2 },
-      { text: "明らかに見合っていない", points: 3 },
-      { text: "搾取されていると感じる", points: 4 },
-    ],
-  },
-  {
-    id: 8,
-    category: "人間関係",
-    question: "職場の人間関係全般について、どう感じていますか？",
-    choices: [
-      { text: "良好で働きやすい", points: 1 },
-      { text: "一部に苦手な人はいるが普通", points: 2 },
-      { text: "人間関係がストレスの主な原因になっている", points: 3 },
-      { text: "孤立している・いじめに近い状況がある", points: 4 },
-    ],
-  },
-  {
-    id: 9,
-    category: "ワークライフバランス",
-    question: "プライベートの時間を十分に確保できていますか？",
-    choices: [
-      { text: "十分に確保できている", points: 1 },
-      { text: "まあまあ確保できている", points: 2 },
-      { text: "仕事に追われて趣味や休息の時間がほとんどない", points: 3 },
-      { text: "家族や友人との関係にも悪影響が出ている", points: 4 },
-    ],
-  },
-  {
-    id: 10,
     category: "総合的な気持ち",
     question: "日曜日の夜、明日からの仕事についてどう感じますか？",
     choices: [
@@ -326,7 +271,7 @@ function LandingView({ onStart }: { onStart: () => void }) {
             className="text-sm sm:text-lg text-slate-600 mb-4 sm:mb-8 font-medium leading-relaxed px-2 sm:px-4"
           >
             今の職場環境、実はかなりヤバいかも？<br className="hidden sm:block" />
-            10の質問であなたの労働環境とストレス状況を客観的にスピード診断。<br />
+            5つの質問であなたの労働環境とストレス状況を客観的にスピード診断。<br />
             迷っているなら、まずはやってみよう！
           </motion.p>
 
@@ -790,14 +735,15 @@ export default function Home() {
   const [score, setScore] = useState(0);
   const [scoreHistory, setScoreHistory] = useState<number[]>([]);
 
-  const handleStart = useCallback(() => {
+  useEffect(() => {
     const ua = navigator.userAgent || "";
-    const isInAppBrowser = /TikTok|Instagram|FBAN|FBAV|Line\//i.test(ua);
-    if (isInAppBrowser) {
+    if (/TikTok|Instagram|FBAN|FBAV|Line\//i.test(ua)) {
       setView("inapp-guide");
-    } else {
-      setView("quiz");
     }
+  }, []);
+
+  const handleStart = useCallback(() => {
+    setView("quiz");
     setCurrentQuestion(0);
     setScore(0);
     setScoreHistory([]);
@@ -805,7 +751,7 @@ export default function Home() {
   }, []);
 
   const handleContinueFromGuide = useCallback(() => {
-    setView("quiz");
+    setView("landing");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
