@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import Image from "next/image";
+const BASE_PATH = process.env.NODE_ENV === "production" ? "/taishoku-shindan" : "";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   DoorOpen,
@@ -299,13 +299,11 @@ function LandingView({ onStart }: { onStart: () => void }) {
             transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
             className="w-full max-w-lg aspect-video mx-auto rounded-3xl shadow-xl shadow-indigo-500/20 mb-8 border border-white overflow-hidden relative"
           >
-            <Image
-              src="/hero-image-v4.png"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`${BASE_PATH}/hero-image-v4.png`}
               alt="仕事に悩む若手社員のリアルな写真"
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, 512px"
-              priority
+              className="object-cover absolute inset-0 w-full h-full"
             />
           </motion.div>
 
@@ -452,13 +450,11 @@ function QuizView({
               transition={{ delay: 0.1, duration: 0.5 }}
               className="w-full max-w-2xl aspect-video rounded-3xl overflow-hidden shadow-lg shadow-indigo-500/10 mb-8 border border-white/50 relative"
             >
-              <Image
-                src={question.id === 1 ? `/q1-v4.png` : `/q${question.id}-v2.png`}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={question.id === 1 ? `${BASE_PATH}/q1-v4.png` : `${BASE_PATH}/q${question.id}-v2.png`}
                 alt={`${question.category}に関するイメージ`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 400px"
-                priority
+                className="object-cover absolute inset-0 w-full h-full"
               />
             </motion.div>
 
