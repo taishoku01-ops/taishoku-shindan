@@ -1,7 +1,7 @@
 "use client";
 
 const AFFILIATE_LINK =
-  "https://www.rentracks.jp/adx/r.html?idx=0.68213.375603.9372.13314&dna=155305";
+  "https://yamedoki.co.jp/rt/?_rt_ck=9372.260323888309&ct_p10c1c4264aIe6c6=6.2.365.DzxsCgXAGy2eCaVx.365.DzxsCgXAGy2eCaVx.DzxsCgXAGy2eCaVx";
 
 export default function Home() {
   return (
@@ -76,7 +76,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="block w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 active:from-green-700 active:to-emerald-700 text-white font-extrabold text-base sm:text-2xl py-3.5 sm:py-5 rounded-full text-center shadow-[0_10px_30px_-10px_rgba(34,197,94,0.6)] transition-all"
           >
-            まずは無料で相談してみる
+            ブラウザで開いたらこちら
           </a>
 
           <p className="text-[10px] sm:text-sm text-slate-400 mt-2 sm:mt-3">
