@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>仕事がつらい、そんなあなたへ</title>
+  <meta name="description" content="今の職場、本当に続けるべき？まずは気軽に相談してみませんか？" />
+  <meta property="og:title" content="仕事がつらい、そんなあなたへ" />
+  <meta property="og:description" content="一人で抱え込まなくて大丈夫。まずは気軽に相談してみませんか？" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="仕事がつらい、そんなあなたへ" />
+  <meta name="twitter:description" content="一人で抱え込まなくて大丈夫。まずは気軽に相談してみませんか？" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #faf7f2;
+      background-image:
+        radial-gradient(at 40% 20%, hsla(30,50%,94%,1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(150,30%,94%,1) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(40,60%,92%,1) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(10,40%,95%,1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(20,50%,96%,1) 0px, transparent 50%);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 8px;
+    }
+    .card {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 16px;
+      padding: 12px;
+      text-align: center;
+      border: 1px solid rgba(241,241,241,0.8);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    }
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid white;
+      box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      font-size: 15px;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 2px;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: 900;
+      background: linear-gradient(to right, #4f46e5, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+    .desc {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .instruction-box {
+      border: 4px solid #facc15;
+      background: linear-gradient(to bottom, #fefce8, #fef9c3);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      text-align: left;
+      box-shadow: 0 10px 25px rgba(250,204,21,0.3);
+      position: relative;
+    }
+    .instruction-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      background: rgba(253,224,71,0.08);
+      animation: pulse 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+    .instruction-title {
+      font-size: 18px;
+      font-weight: 900;
+      text-align: center;
+      color: #0f172a;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .step-box {
+      background: white;
+      border: 2px solid #fde047;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .step-box:last-child { margin-bottom: 0; }
+    .step-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      line-height: 1.6;
+    }
+    .highlight-green {
+      color: #16a34a;
+      font-size: 15px;
+      font-weight: 900;
+    }
+    .highlight-red {
+      color: #dc2626;
+      font-size: 15px;
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-decoration-color: #ef4444;
+      text-underline-offset: 3px;
+    }
+    .highlight-dots {
+      color: #dc2626;
+      font-size: 15px;
+      font-weight: 900;
+      background: #fef2f2;
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+    .note {
+      font-size: 9px;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 8px;
+      line-height: 1.5;
+      position: relative;
+    }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(to right, #22c55e, #10b981);
+      color: white;
+      font-weight: 900;
+      font-size: 18px;
+      padding: 14px;
+      border-radius: 9999px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 10px 30px -10px rgba(34,197,94,0.6);
+      border: none;
+      cursor: pointer;
+    }
+    .cta-note {
+      font-size: 9px;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 6px;
+    }
+    @media (min-width: 640px) {
+      .container { padding: 24px; }
+      .card { padding: 40px; border-radius: 32px; }
+      .hero-img { aspect-ratio: 16/9; border-radius: 16px; margin-bottom: 20px; }
+      .subtitle { font-size: 20px; }
+      .title { font-size: 36px; margin-bottom: 12px; }
+      .desc { font-size: 16px; margin-bottom: 20px; }
+      .instruction-box { border-width: 5px; padding: 24px; margin-bottom: 20px; border-radius: 16px; }
+      .instruction-title { font-size: 24px; margin-bottom: 20px; }
+      .step-box { padding: 16px; border-radius: 12px; margin-bottom: 16px; }
+      .step-text { font-size: 16px; }
+      .highlight-green, .highlight-red, .highlight-dots { font-size: 20px; }
+      .note { font-size: 14px; }
+      .cta-btn { font-size: 24px; padding: 20px; }
+      .cta-note { font-size: 14px; margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <img src="/taishoku-shindan/hero-image-v4.png" alt="仕事に悩むイメージ" class="hero-img" />
+
+      <p class="subtitle">仕事がつらい、もう限界かも…</p>
+      <p class="title">そんなあなたへ</p>
+      <p class="desc">一人で抱え込まなくて大丈夫。<br />まずは気軽に相談してみませんか？</p>
+
+      <div class="instruction-box">
+        <p class="instruction-title">⚠️ ご利用方法</p>
+
+        <div class="step-box">
+          <p class="step-text">
+            下の<span class="highlight-green">緑色のボタン</span>を<span class="highlight-red">長押し</span>
+          </p>
+          <p class="step-text">→ 「ブラウザで開く」を選択</p>
+        </div>
+
+        <div class="step-box">
+          <p class="step-text">
+            または、画面右上の<span class="highlight-dots">「…」</span>メニュー
+          </p>
+          <p class="step-text">→ 「ブラウザで開く」を選択</p>
+        </div>
+
+        <p class="note">※ アプリ内ブラウザでは正常に表示されない場合があります。<br />Safari・Chromeなどの外部ブラウザでお開きください。</p>
+      </div>
+
+      <a href="https://yamedoki.co.jp/rt/?_rt_ck=9372.260323888309&ct_p10c1c4264aIe6c6=6.2.365.DzxsCgXAGy2eCaVx.365.DzxsCgXAGy2eCaVx.DzxsCgXAGy2eCaVx" target="_blank" rel="noopener noreferrer" class="cta-btn">
+        詳しくはこちら
+      </a>
+
+      <p class="cta-note">※ 相談は完全無料・秘密厳守です</p>
+    </div>
+  </div>
+</body>
+</html>
