@@ -86,20 +86,6 @@
       margin-bottom: 12px;
       text-align: left;
       box-shadow: 0 10px 25px rgba(250,204,21,0.3);
-      position: relative;
-    }
-    .instruction-box::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      background: rgba(253,224,71,0.08);
-      animation: pulse 2s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.8; }
     }
     .instruction-title {
       font-size: 18px;
@@ -115,7 +101,7 @@
       border-radius: 8px;
       padding: 10px;
       margin-bottom: 8px;
-      position: relative;
+      width: 100%;
     }
     .step-box:last-child { margin-bottom: 0; }
     .step-text {
