@@ -287,17 +287,17 @@ function LandingView({ onStart }: { onStart: () => void }) {
       exit="exit"
       variants={fadeUpVariant}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="min-h-screen flex flex-col items-center justify-center px-4 py-12 relative z-10"
+      className="min-h-screen flex flex-col items-center justify-center px-4 py-6 sm:py-12 relative z-10"
     >
       <div className="max-w-xl w-full">
         {/* Main Card */}
-        <div className="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 sm:p-12 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-stone-100">
+        <div className="bg-white/70 backdrop-blur-xl rounded-[2rem] p-5 sm:p-12 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-stone-100">
 
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
-            className="w-full max-w-lg aspect-video mx-auto rounded-3xl shadow-xl shadow-indigo-500/20 mb-8 border border-white overflow-hidden relative"
+            className="w-full max-w-lg aspect-[16/8] sm:aspect-video mx-auto rounded-2xl sm:rounded-3xl shadow-xl shadow-indigo-500/20 mb-4 sm:mb-8 border border-white overflow-hidden relative"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -311,9 +311,9 @@ function LandingView({ onStart }: { onStart: () => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight mb-6 text-slate-800 tracking-tight"
+            className="text-xl sm:text-3xl md:text-4xl font-extrabold leading-tight mb-3 sm:mb-6 text-slate-800 tracking-tight"
           >
-            <span className="text-xl sm:text-2xl text-slate-500 font-bold block mb-2">
+            <span className="text-base sm:text-2xl text-slate-500 font-bold block mb-1 sm:mb-2">
               今のつらい状況を客観的に可視化する
             </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">「仕事の辞めどき診断」</span>
@@ -323,7 +323,7 @@ function LandingView({ onStart }: { onStart: () => void }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-base sm:text-lg text-slate-600 mb-8 font-medium leading-relaxed px-4"
+            className="text-sm sm:text-lg text-slate-600 mb-4 sm:mb-8 font-medium leading-relaxed px-2 sm:px-4"
           >
             今の職場環境、実はかなりヤバいかも？<br className="hidden sm:block" />
             10の質問であなたの労働環境とストレス状況を客観的にスピード診断。<br />
@@ -335,9 +335,9 @@ function LandingView({ onStart }: { onStart: () => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="bg-stone-50/50 rounded-2xl p-6 mb-10 text-left border border-white/60"
+            className="bg-stone-50/50 rounded-2xl p-4 sm:p-6 mb-5 sm:mb-10 text-left border border-white/60"
           >
-            <div className="flex flex-col gap-4 text-sm sm:text-base text-stone-600 font-medium">
+            <div className="flex flex-col gap-2 sm:gap-4 text-xs sm:text-base text-stone-600 font-medium">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
@@ -367,7 +367,7 @@ function LandingView({ onStart }: { onStart: () => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, type: "spring", stiffness: 400, damping: 10 }}
-            className="group relative w-full sm:w-auto inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold py-5 px-12 rounded-full text-xl shadow-[0_10px_40px_-10px_rgba(249,115,22,0.6)] overflow-hidden"
+            className="group relative w-full sm:w-auto inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-amber-500 text-white font-extrabold py-4 sm:py-5 px-8 sm:px-12 rounded-full text-base sm:text-xl shadow-[0_10px_40px_-10px_rgba(249,115,22,0.6)] overflow-hidden"
           >
             <span className="relative z-10 flex items-center gap-2">
               さっそく診断をやってみる！
@@ -380,7 +380,7 @@ function LandingView({ onStart }: { onStart: () => void }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="text-xs text-stone-400 mt-6"
+            className="text-xs text-stone-400 mt-3 sm:mt-6"
           >
             回答内容は保存されません。あなたのペースで進めてください。
           </motion.p>
