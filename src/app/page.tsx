@@ -22,7 +22,7 @@ export default function Home() {
           </div>
 
           {/* Title */}
-          <h1 className="font-extrabold leading-tight mb-1.5 sm:mb-3 text-slate-800 tracking-tight">
+          <h1 className="font-extrabold leading-tight mb-0.5 sm:mb-3 text-slate-800 tracking-tight">
             <span className="text-sm sm:text-xl text-slate-500 font-bold block mb-0.5">
               仕事がつらい、もう限界かも…
             </span>
@@ -30,6 +30,11 @@ export default function Home() {
               そんなあなたへ
             </span>
           </h1>
+
+          <p className="text-[11px] sm:text-base text-slate-500 mb-1.5 sm:mb-4 leading-relaxed">
+            一人で抱え込まなくて大丈夫。<br />
+            まずは気軽に相談してみませんか？
+          </p>
 
           {/* Instruction Box */}
           <div className="w-full border-4 sm:border-[5px] border-yellow-400 bg-gradient-to-b from-yellow-50 to-yellow-100 rounded-xl sm:rounded-2xl p-3 sm:p-6 mb-2.5 sm:mb-5 shadow-xl shadow-yellow-400/40 ring-2 sm:ring-4 ring-yellow-300/40 relative">
