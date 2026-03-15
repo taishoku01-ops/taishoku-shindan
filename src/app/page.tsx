@@ -410,18 +410,18 @@ function QuizView({
   return (
     <div className="min-h-screen flex flex-col px-4 py-8 relative z-10 w-full max-w-2xl mx-auto">
       {/* Header & Progress */}
-      <div className="mb-12 pt-4">
-        <div className="flex justify-between items-center mb-4">
+      <div className="mb-4 sm:mb-8 pt-2 sm:pt-4">
+        <div className="flex justify-between items-center mb-2">
           <div className="flex flex-col">
             <span className="text-xs font-bold text-indigo-600 mb-1 tracking-wider uppercase">
               {question.category}
             </span>
-            <span className="text-xl font-black text-slate-300">
+            <span className="text-lg sm:text-xl font-black text-slate-300">
               {String(currentQuestion + 1).padStart(2, '0')}<span className="text-sm text-slate-400 font-medium">/{totalQuestions}</span>
             </span>
           </div>
         </div>
-        <div className="w-full bg-slate-200/60 rounded-full h-2.5 overflow-hidden backdrop-blur-sm">
+        <div className="w-full bg-slate-200/60 rounded-full h-2 overflow-hidden backdrop-blur-sm">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
@@ -432,7 +432,7 @@ function QuizView({
       </div>
 
       {/* Question Content */}
-      <div className="flex-1 flex flex-col justify-center mt-8">
+      <div className="flex-1 flex flex-col justify-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={question.id}
@@ -448,7 +448,7 @@ function QuizView({
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="w-full max-w-2xl aspect-video rounded-3xl overflow-hidden shadow-lg shadow-indigo-500/10 mb-8 border border-white/50 relative"
+              className="w-full max-w-2xl aspect-[16/8] sm:aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg shadow-indigo-500/10 mb-4 sm:mb-8 border border-white/50 relative"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -458,18 +458,18 @@ function QuizView({
               />
             </motion.div>
 
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-8 leading-relaxed text-center w-full">
+            <h2 className="text-lg sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-8 leading-relaxed text-center w-full">
               {question.question}
             </h2>
 
-            <div className="flex flex-col gap-3 w-full">
+            <div className="flex flex-col gap-2 sm:gap-3 w-full">
               {question.choices.map((choice, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.01, backgroundColor: "rgba(255, 255, 255, 0.9)" }}
                   whileTap={{ scale: 0.99 }}
                   onClick={() => onAnswer(choice.points)}
-                  className="group relative w-full text-left glass hover:border-indigo-300 rounded-2xl p-5 text-base sm:text-lg text-slate-700 transition-colors shadow-sm overflow-hidden flex items-center justify-between"
+                  className="group relative w-full text-left glass hover:border-indigo-300 rounded-xl sm:rounded-2xl p-3 sm:p-5 text-sm sm:text-lg text-slate-700 transition-colors shadow-sm overflow-hidden flex items-center justify-between"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
