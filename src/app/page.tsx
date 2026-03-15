@@ -18,7 +18,7 @@ import {
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-type View = "landing" | "quiz" | "result";
+type View = "landing" | "inapp-guide" | "quiz" | "result";
 
 interface Choice {
   text: string;
@@ -714,6 +714,74 @@ function ResultView({
   );
 }
 
+function InAppGuideView({ onContinue }: { onContinue: () => void }) {
+  const [urlCopied, setUrlCopied] = useState(false);
+  const pageUrl = typeof window !== "undefined" ? window.location.href : "";
+
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(pageUrl).then(() => {
+      setUrlCopied(true);
+    });
+  }, [pageUrl]);
+
+  return (
+    <motion.div
+      key="inapp-guide"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={fadeUpVariant}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen flex flex-col items-center justify-center px-4 py-8 relative z-10"
+    >
+      <div className="max-w-md w-full bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 sm:p-10 shadow-xl border border-slate-100">
+        <div className="text-center mb-6">
+          <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <AlertTriangle className="w-8 h-8 text-amber-600" />
+          </div>
+          <h2 className="text-xl font-extrabold text-slate-800 mb-2">
+            ブラウザで開いてください
+          </h2>
+          <p className="text-sm text-slate-500">
+            正しく診断結果を表示するために、<br />Safariなどのブラウザで開く必要があります
+          </p>
+        </div>
+
+        <div className="bg-slate-50 rounded-xl p-5 mb-6 space-y-4">
+          <div className="flex items-start gap-3">
+            <span className="w-6 h-6 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+            <p className="text-sm text-slate-700">画面右下の <strong>「…」</strong> または <strong>共有ボタン</strong> をタップ</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="w-6 h-6 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+            <p className="text-sm text-slate-700"><strong>「Safariで開く」</strong>または<strong>「ブラウザで開く」</strong>をタップ</p>
+          </div>
+        </div>
+
+        <p className="text-xs text-slate-400 text-center mb-4">もしくはURLをコピーしてブラウザに貼り付け</p>
+
+        <button
+          onClick={handleCopy}
+          className={`w-full font-bold py-3 px-6 rounded-full text-sm transition-all mb-4 ${
+            urlCopied
+              ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
+              : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200"
+          }`}
+        >
+          {urlCopied ? "コピーしました！ブラウザに貼り付けてね" : "URLをコピーする"}
+        </button>
+
+        <button
+          onClick={onContinue}
+          className="w-full text-slate-400 hover:text-slate-600 text-xs font-medium py-2 transition-colors"
+        >
+          このまま診断を続ける →
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
 // ─── Main Page ───────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -723,10 +791,21 @@ export default function Home() {
   const [scoreHistory, setScoreHistory] = useState<number[]>([]);
 
   const handleStart = useCallback(() => {
-    setView("quiz");
+    const ua = navigator.userAgent || "";
+    const isInAppBrowser = /TikTok|Instagram|FBAN|FBAV|Line\//i.test(ua);
+    if (isInAppBrowser) {
+      setView("inapp-guide");
+    } else {
+      setView("quiz");
+    }
     setCurrentQuestion(0);
     setScore(0);
     setScoreHistory([]);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const handleContinueFromGuide = useCallback(() => {
+    setView("quiz");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
@@ -768,6 +847,7 @@ export default function Home() {
     <main className="min-h-screen mesh-bg font-sans selection:bg-indigo-200 selection:text-indigo-900 overflow-hidden relative">
       <AnimatePresence mode="wait">
         {view === "landing" && <LandingView key="landing" onStart={handleStart} />}
+        {view === "inapp-guide" && <InAppGuideView key="inapp-guide" onContinue={handleContinueFromGuide} />}
         {view === "quiz" && (
           <QuizView
             key="quiz"
