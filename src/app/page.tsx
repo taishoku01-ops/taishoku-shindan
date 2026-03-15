@@ -1,6 +1,4 @@
-"use client";
-
-const BASE_PATH = process.env.NODE_ENV === "production" ? "/taishoku-shindan" : "";
+const BASE_PATH = "/taishoku-shindan";
 
 const AFFILIATE_LINK =
   "https://yamedoki.co.jp/rt/?_rt_ck=9372.260323888309&ct_p10c1c4264aIe6c6=6.2.365.DzxsCgXAGy2eCaVx.365.DzxsCgXAGy2eCaVx.DzxsCgXAGy2eCaVx";
