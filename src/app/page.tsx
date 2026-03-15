@@ -511,7 +511,7 @@ function ResultView({
 }) {
   const result = getResultTier(score);
   const percentage = Math.round((score / maxScore) * 100);
-  const affiliateLink = "https://example.com/taishoku-daiko?ref=shindan";
+  const affiliateLink = "https://www.rentracks.jp/adx/r.html?idx=0.68213.375603.9372.13314&dna=155305";
 
   return (
     <motion.div
