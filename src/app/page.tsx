@@ -512,6 +512,27 @@ function ResultView({
   const result = getResultTier(score);
   const percentage = Math.round((score / maxScore) * 100);
   const affiliateLink = "https://www.rentracks.jp/adx/r.html?idx=0.68213.375603.9372.13314&dna=155305";
+  const [copied, setCopied] = useState(false);
+
+  const handleCTAClick = useCallback((e: React.MouseEvent) => {
+    const ua = navigator.userAgent || "";
+    const isInAppBrowser = /TikTok|Instagram|FBAN|FBAV|Line\//i.test(ua);
+
+    if (isInAppBrowser) {
+      e.preventDefault();
+      // Android: intent URLで外部ブラウザを試す
+      if (/android/i.test(ua)) {
+        const intentUrl = `intent://${affiliateLink.replace(/^https?:\/\//, "")}#Intent;scheme=https;action=android.intent.action.VIEW;end`;
+        window.location.href = intentUrl;
+      } else {
+        // iOS: クリップボードにコピーしてガイド表示
+        navigator.clipboard.writeText(affiliateLink).then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 5000);
+        });
+      }
+    }
+  }, [affiliateLink]);
 
   return (
     <motion.div
@@ -634,6 +655,7 @@ function ResultView({
               href={affiliateLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleCTAClick}
               className="group relative block w-full bg-gradient-to-r from-rose-500 to-orange-500 text-white font-bold py-5 px-8 rounded-2xl text-center text-lg shadow-xl shadow-rose-500/25 overflow-hidden"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -649,12 +671,23 @@ function ResultView({
               href={affiliateLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleCTAClick}
               className="block w-full glass hover:bg-white border-2 border-indigo-200 hover:border-indigo-400 text-indigo-700 font-bold py-5 px-8 rounded-2xl text-center text-lg transition-all shadow-sm"
             >
               {result.ctaText}
             </motion.a>
           )}
-          {result.ctaStyle === "strong" && (
+          {copied && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-4 bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center"
+            >
+              <p className="text-emerald-700 font-bold text-sm mb-1">URLをコピーしました！</p>
+              <p className="text-emerald-600 text-xs">Safariなどのブラウザを開いて、アドレスバーに貼り付けてください</p>
+            </motion.div>
+          )}
+          {result.ctaStyle === "strong" && !copied && (
             <p className="text-center text-sm font-medium text-slate-500 mt-4">
               ※ 相談は完全無料。秘密厳守で安心です。
             </p>
