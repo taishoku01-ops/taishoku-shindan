@@ -7,11 +7,10 @@ const AFFILIATE_LINK =
 
 export default function Home() {
   return (
-    <main className="min-h-[100dvh] flex flex-col mesh-bg font-sans overflow-hidden">
-      <div className="flex-1 flex flex-col max-w-lg w-full mx-auto px-2 sm:px-6 py-2 sm:py-6">
-        <div className="flex-1 bg-white/70 backdrop-blur-xl rounded-2xl sm:rounded-[2rem] px-3 py-3 sm:p-10 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-stone-100 flex flex-col justify-between">
+    <main className="min-h-[100dvh] mesh-bg font-sans overflow-x-hidden">
+      <div className="max-w-lg w-full mx-auto px-2 sm:px-6 py-2 sm:py-6">
+        <div className="bg-white/70 backdrop-blur-xl rounded-2xl sm:rounded-[2rem] px-3 py-3 sm:p-10 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-stone-100">
 
-          {/* Top section */}
           <div>
             {/* Hero Image */}
             <div className="w-full aspect-[16/7] sm:aspect-video rounded-xl sm:rounded-2xl overflow-hidden shadow-md shadow-indigo-500/20 mb-3 sm:mb-5 border border-white relative">
@@ -39,7 +38,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Middle - Instruction Box */}
+          {/* Instruction Box */}
           <div className="w-full border-4 sm:border-[5px] border-yellow-400 bg-gradient-to-b from-yellow-50 to-yellow-100 rounded-xl sm:rounded-2xl p-3 sm:p-6 mb-3 sm:mb-5 shadow-xl shadow-yellow-400/40 ring-2 sm:ring-4 ring-yellow-300/40 relative">
             <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-yellow-300/10 animate-pulse pointer-events-none" />
 
@@ -78,9 +77,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Bottom - CTA */}
-          <div>
-            <a
+          <a
               href={AFFILIATE_LINK}
               target="_blank"
               rel="noopener noreferrer"
@@ -92,7 +89,6 @@ export default function Home() {
             <p className="text-[9px] sm:text-sm text-slate-400 mt-1.5 sm:mt-3">
               ※ 相談は完全無料・秘密厳守です
             </p>
-          </div>
         </div>
       </div>
     </main>
