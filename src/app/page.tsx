@@ -287,7 +287,7 @@ function LandingView({ onStart }: { onStart: () => void }) {
                 <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                 </div>
-                <span>所要時間はわずか約3分</span>
+                <span>所要時間はわずか約1分</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center shrink-0 border border-amber-100">
