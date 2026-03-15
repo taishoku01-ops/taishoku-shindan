@@ -471,10 +471,15 @@ function ResultView({
         window.location.href = intentUrl;
       } else {
         // iOS: クリップボードにコピーしてガイド表示
-        navigator.clipboard.writeText(affiliateLink).then(() => {
+        try {
+          navigator.clipboard.writeText(affiliateLink).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 5000);
+          });
+        } catch {
           setCopied(true);
           setTimeout(() => setCopied(false), 5000);
-        });
+        }
       }
     }
   }, [affiliateLink]);
@@ -661,12 +666,20 @@ function ResultView({
 
 function InAppGuideView({ onContinue }: { onContinue: () => void }) {
   const [urlCopied, setUrlCopied] = useState(false);
-  const pageUrl = typeof window !== "undefined" ? window.location.href : "";
+  const [pageUrl, setPageUrl] = useState("");
+
+  useEffect(() => {
+    setPageUrl(window.location.href);
+  }, []);
 
   const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(pageUrl).then(() => {
+    try {
+      navigator.clipboard.writeText(pageUrl).then(() => {
+        setUrlCopied(true);
+      });
+    } catch {
       setUrlCopied(true);
-    });
+    }
   }, [pageUrl]);
 
   return (
