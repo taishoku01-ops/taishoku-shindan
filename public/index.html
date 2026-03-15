@@ -95,14 +95,22 @@
       margin-bottom: 10px;
       position: relative;
     }
+    .step-box {
+      background: white;
+      border: 2px solid #fde047;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+      display: block;
+      overflow: hidden;
+    }
+    .step-box:last-of-type { margin-bottom: 0; }
     .step-text {
       font-size: 14px;
       font-weight: 700;
       color: #334155;
       line-height: 1.8;
-      margin-bottom: 6px;
     }
-    .step-text:last-of-type { margin-bottom: 0; }
     .highlight-green {
       color: #16a34a;
       font-size: 15px;
@@ -163,6 +171,7 @@
       .desc { font-size: 16px; margin-bottom: 20px; }
       .instruction-box { border-width: 5px; padding: 24px; margin-bottom: 20px; border-radius: 16px; }
       .instruction-title { font-size: 24px; margin-bottom: 20px; }
+      .step-box { padding: 12px 16px; border-radius: 12px; margin-bottom: 12px; }
       .step-text { font-size: 16px; }
       .highlight-green, .highlight-red, .highlight-dots { font-size: 20px; }
       .note { font-size: 14px; }
@@ -183,9 +192,13 @@
       <div class="instruction-box">
         <p class="instruction-title">⚠️ ご利用方法</p>
 
-        <p class="step-text">下の<span class="highlight-green">緑色のボタン</span>を<span class="highlight-red">長押し</span>して、「ブラウザで開く」を選択してください。</p>
+        <div class="step-box">
+          <p class="step-text">下の<span class="highlight-green">緑色のボタン</span>を<span class="highlight-red">長押し</span>して、「ブラウザで開く」を選択してください。</p>
+        </div>
 
-        <p class="step-text">または、画面右上の<span class="highlight-dots">「…」</span>メニューから「ブラウザで開く」を選んでください。</p>
+        <div class="step-box">
+          <p class="step-text">または、画面右上の<span class="highlight-dots">「…」</span>メニューから「ブラウザで開く」を選んでください。</p>
+        </div>
 
         <p class="note">※ アプリ内ブラウザでは正常に表示されない場合があります。<br />Safari・Chromeなどの外部ブラウザでお開きください。</p>
       </div>
